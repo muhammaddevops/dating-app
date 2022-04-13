@@ -1,21 +1,29 @@
 import React from "react";
-import logo from "../images/logo.png";
-import tinderLogo from "../images/Tinder-Logo.png";
+import Wlogo from "../images/NTWLogo.png";
+import Blogo from "../images/NTLogo.png";
 
-const Nav = ({ minimal, authToken, setShowModal, showModal }) => {
+const Nav = ({ minimal, authToken, setShowModal, showModal, setIsSignUp }) => {
+	const handleClick = () => {
+		setShowModal(true);
+		setIsSignUp(false);
+	};
 
-  const handleClick = ()=>{
-    setShowModal(true)
-  }
-  return (
-    <nav>
-      <div className="logo-container">
-        <img className="logo" src={minimal ? tinderLogo : logo} />
-      </div>
-      {!authToken && !minimal && <button className="nav-button" onClick={handleClick}
-      disabled={showModal}>Log in</button>}
-    </nav>
-  );
+	return (
+		<nav>
+			<div className='logo-container'>
+				<img className='logo' src={minimal ? Blogo : Wlogo} />
+			</div>
+			{!authToken && !minimal && (
+				<button
+					className='nav-button'
+					onClick={handleClick}
+					disabled={showModal}
+				>
+					Log in
+				</button>
+			)}
+		</nav>
+	);
 };
 
 export default Nav;
